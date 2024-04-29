@@ -25,12 +25,15 @@ const useGetEntireCoinsInfinite = () => {
       if (lastPage.length < requestParams.per_page) return;
       return allPages.length + 1;
     },
+    // 다회 호출 시 429 에러가 있어 캐싱타임을 크게 잡음
+    staleTime: 1000 * 60 * 20,
+    gcTime: 1000 * 60 * 20,
   })
 
-  const flatList = useMemo<CoinListItemType[]>(() => data.pages.flat(), [data]);
+  const flattedList = useMemo<CoinListItemType[]>(() => data.pages.flat(), [data]);
 
   return {
-    flatList,
+    flattedList,
     ...query,
   }
 }

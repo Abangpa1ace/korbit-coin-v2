@@ -1,21 +1,20 @@
 import ListTable from "@/components/list/common/ListTable/ListTable";
-import BaseSuspense from "@/components/shared/BaseSuspense";
 import useGetEntireCoinsInfinite from "@/hooks/apis/useGetEntireCoinsInfinite";
 import { themeColor } from "@/themes/variable";
 import styled from "@emotion/styled";
 
-const QuoteCoinList = () => {
-  const { flatList, isFetchingNextPage, fetchNextPage, hasNextPage, isError } = useGetEntireCoinsInfinite();
+const ListQuotesTable = () => {
+  const { flattedList, isFetchingNextPage, fetchNextPage, hasNextPage, isError } = useGetEntireCoinsInfinite();
 
   return (
     <>
-      <ListTable coinList={flatList} isError={isError} />
+      <ListTable coinList={flattedList} isError={isError} />
       {hasNextPage && <MoreButton disabled={isFetchingNextPage} onClick={() => fetchNextPage()}>더보기</MoreButton>}
     </>
   )
 }
 
-export default QuoteCoinList;
+export default ListQuotesTable;
 
 const MoreButton = styled.button`
   width: 100%;

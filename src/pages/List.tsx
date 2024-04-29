@@ -1,5 +1,5 @@
 import ListTabs from '@/components/list/common/ListTabs';
-import QuoteCoinList from '@/components/list/quotes/QuoteCoinList';
+import ListQuotes from '@/components/list/quotes/ListQuotes';
 import BaseSuspense from '@/components/shared/BaseSuspense';
 import Spacer from '@/components/shared/Spacer';
 import { ListTabMap } from '@/constants/coin/list';
@@ -13,7 +13,7 @@ function List(): JSX.Element {
       <ListTabs />
       <Spacer y={30} />
       <BaseSuspense>
-        {activeTab === ListTabMap.BOOKMARKS ? <></> : <QuoteCoinList />}
+        {activeTab === ListTabMap.BOOKMARKS ? <></> : <ListQuotes />}
       </BaseSuspense>
     </Main>
   )

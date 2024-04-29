@@ -23,13 +23,9 @@ const BaseSuspense = ({ children }: PropsWithChildren) => {
 export default BaseSuspense;
 
 const Fallback = styled.div`
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 240px;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
 `;
