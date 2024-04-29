@@ -2,6 +2,7 @@ import { ListTabLabelMap, ListTabMap } from "@/constants/coin/list";
 import { ListTabType } from "@/types/coin/list";
 
 import { Entries } from "@/types/utility";
+import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom"
 
 const TAB = 'tab'
@@ -16,6 +17,10 @@ const useListTab = () => {
 
     setSearchParams({ [TAB]: nextTab });
   }
+
+  useEffect(() => {
+    if (!activeTab) handleChangeTab('QUOTES');
+  }, [activeTab])
 
   return {
     tabs,

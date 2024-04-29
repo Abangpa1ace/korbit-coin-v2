@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { Children } from 'react';
 
 function ListTabs(): JSX.Element {
-  const {tabs, activeTab, handleChangeTab } = useListTab();
+  const { tabs, activeTab, handleChangeTab } = useListTab();
 
   return (
     <Tabs>
