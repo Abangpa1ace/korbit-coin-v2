@@ -14,4 +14,15 @@ export default defineConfig({
   resolve: {
     alias: [{ find: "@", replacement: "/src" }],
   },
+  server: {
+    proxy: {
+      "/coingecko": {
+        target: "https://api.coingecko.com/api/v3",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/coingecko/, ""),
+        secure: false,
+        ws: true,
+      },
+    },
+  },
 })
