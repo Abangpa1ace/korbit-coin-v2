@@ -1,6 +1,7 @@
 import { ListTableColumnType } from '@/components/list/common/ListTable/ListTable';
 import ColumnPercent from '@/components/list/common/ListTable/ListTableBody/ColumnPercent';
 import ColumnPrice from '@/components/list/common/ListTable/ListTableBody/ColumnPrice';
+import BookmarkStarButton from '@/components/shared/BookmarkStarButton';
 import { themeColor } from '@/themes/variable';
 import { CoinListItemType } from '@/types/coin/list';
 import { css } from '@emotion/react';
@@ -26,7 +27,7 @@ const getColumElement = (column: ListTableColumnType, coin: CoinListItemType) =>
     case 'price_change_percentage_7d_in_currency':
       return <ColumnPercent percent={coin[data]} />
     case 'bookmark':
-      return null;
+      return <BookmarkStarButton id={coin.id} />
     default: 
       return <ColumnText type='secondary'>{coin[data].toUpperCase()}</ColumnText>
   }

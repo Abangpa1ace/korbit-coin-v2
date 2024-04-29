@@ -3,7 +3,7 @@ import Spacer from '@/components/shared/Spacer';
 import { VsCurrencyMap } from '@/constants/coin/common';
 import { ListTabMap } from '@/constants/coin/list';
 import useListTab from '@/hooks/list/useListTab';
-import useQuoteStore from '@/store/list/quoteStore';
+import useQuoteStore from '@/store/coin/quoteStore';
 import { VsCurrencyType } from '@/types/coin/common';
 import { ListPerPageType, ListTabType } from '@/types/coin/list';
 import styled from '@emotion/styled';

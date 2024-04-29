@@ -1,16 +1,11 @@
-import { ListTabMap } from "@/constants/coin/list";
-import { VsCurrencyType } from "@/types/coin/common";
+import { ListTabMap } from '@/constants/coin/list';
+import { VsCurrencyType } from '@/types/coin/common';
 
-export type ListTabType = typeof ListTabMap[keyof typeof ListTabMap];
+export type ListTabType = (typeof ListTabMap)[keyof typeof ListTabMap];
 
 export type ListPerPageType = 10 | 30 | 50;
 export type ListOrderType = // market_cap_desc로 고정해서 사용하므로 유의미한 타입은 아님
-  | 'market_cap_desc'
-  | 'market_cap_asc'
-  | 'volume_asc'
-  | 'volume_desc'
-  | 'id_asc'
-  | 'id_desc'; 
+  'market_cap_desc' | 'market_cap_asc' | 'volume_asc' | 'volume_desc' | 'id_asc' | 'id_desc';
 
 export interface CoinListItemType {
   id: string;
@@ -50,8 +45,9 @@ export interface CoinListItemType {
 
 export interface QuoteListRequestParams {
   vs_currency: VsCurrencyType;
-  page: number;
-  per_page: ListPerPageType;
+  page?: number;
+  per_page?: ListPerPageType;
   order?: ListOrderType;
   price_change_percentage?: string;
+  ids?: string;
 }

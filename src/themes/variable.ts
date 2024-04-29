@@ -3,10 +3,10 @@ export const themeWidth = {
 };
 
 export const themeColor = {
+  navy100: "#bcbaff",
   blue200: "#3c75df",
   red200: "#e45a5a",
-  navy100: "#444859",
-  navy200: "#293B6F",
+  yellow200: "#FFDF4F",
   gray50: "#fafafa",
   gray60: "#eee",
   gray100: "#e9ecef",

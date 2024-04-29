@@ -1,3 +1,4 @@
+import ListBookmarks from '@/components/list/bookmarks/ListBookmarks';
 import ListTabs from '@/components/list/common/ListTabs';
 import ListQuotes from '@/components/list/quotes/ListQuotes';
 import BaseSuspense from '@/components/shared/BaseSuspense';
@@ -13,13 +14,12 @@ function List(): JSX.Element {
       <ListTabs />
       <Spacer y={30} />
       <BaseSuspense>
-        {activeTab === ListTabMap.BOOKMARKS ? <></> : <ListQuotes />}
+        {activeTab === ListTabMap.BOOKMARKS ? <ListBookmarks /> : <ListQuotes />}
       </BaseSuspense>
     </Main>
-  )
+  );
 }
 
 export default List;
 
-const Main = styled.main`
-`
+const Main = styled.main``;

@@ -1,5 +1,5 @@
 import { CurrencyUnit } from '@/constants/coin/common';
-import useQuoteStore from '@/store/list/quoteStore';
+import useQuoteStore from '@/store/coin/quoteStore';
 import styled from '@emotion/styled';
 
 interface Props {
