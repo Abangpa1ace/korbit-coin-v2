@@ -1,14 +1,10 @@
 import ListTable from '@/components/coin/list/common/ListTable/ListTable';
-import { BookmartListDefaultParams } from '@/constants/coin/list';
-import useGetCoinsByIds from '@/hooks/apis/useGetCoinsByIds';
+import useGetBookmarkCoins from '@/hooks/apis/useGetBookmarkCoins';
 import useBookmarkStore from '@/store/coin/bookmarkStore';
 
 const ListBookmarksTable = () => {
   const bookmarkIds = useBookmarkStore((state) => state.bookmarkIds);
-  const { data, isError } = useGetCoinsByIds({
-    ...BookmartListDefaultParams,
-    ids: bookmarkIds ? bookmarkIds.sort().join(',') : undefined,
-  });
+  const { data, isError } = useGetBookmarkCoins(bookmarkIds);
 
   return <ListTable coinList={data} isError={isError} />;
 };
