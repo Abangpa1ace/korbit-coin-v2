@@ -1,11 +1,13 @@
+import { AxiosErrorData } from '@/types/api';
 import axios, {
   AxiosError,
   AxiosResponse,
   CreateAxiosDefaults,
   InternalAxiosRequestConfig,
-} from "axios";
+} from 'axios';
 
-import qs, { StringifiableRecord } from "query-string";
+import queryString, { StringifiableRecord } from 'query-string';
+import toast from 'react-hot-toast';
 
 interface Params {
   config?: CreateAxiosDefaults;
@@ -26,11 +28,11 @@ class Axios {
   private setInterceptors() {
     this.instance.interceptors.request.use(
       this.requestResolved.bind(this),
-      this.requestRejected.bind(this)
+      this.requestRejected.bind(this),
     );
     this.instance.interceptors.response.use(
       this.responseResolved.bind(this),
-      this.responseRejected.bind(this)
+      this.responseRejected.bind(this),
     );
   }
 
@@ -39,11 +41,13 @@ class Axios {
   }
 
   private requestRejected(error: AxiosError) {
-    const { message, status } = error;
-    return Promise.reject({
+    const { message, code, response } = error;
+    toast.error('API 요청이 올바르지 않아요\n' + message);
+    return Promise.reject<AxiosErrorData>({
       error,
-      status,
+      code,
       message,
+      httpCode: response?.status,
     });
   }
 
@@ -52,31 +56,45 @@ class Axios {
   }
 
   private responseRejected(error: AxiosError) {
-    const { message, status } = error;
-    return Promise.reject({
+    const { message, code, response } = error;
+    toast.error('API 응답에 오류가 있어요\n' + message);
+    return Promise.reject<AxiosErrorData>({
       error,
-      status,
+      code,
       message,
+      httpCode: response?.status,
     });
   }
 
   get<T>(url: string, query?: StringifiableRecord) {
     return this.instance
       .get<T>(
-        qs.stringifyUrl({
+        queryString.stringifyUrl({
           url,
           query,
-        })
+        }),
       )
       .then((res) => res.data);
+  }
+
+  post<P, T>(url: string, params: P) {
+    return this.instance.post<T>(url, params).then((res) => res.data);
+  }
+
+  patch<P, T>(url: string, params: P) {
+    return this.instance.patch<T>(url, params).then((res) => res.data);
+  }
+
+  delete<T>(url: string) {
+    return this.instance.delete<T>(url).then((res) => res.data);
   }
 }
 
 const coinGeckoAxios = new Axios({
   config: {
-    baseURL: "/coingecko",
+    baseURL: '/coingecko',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   },
 });

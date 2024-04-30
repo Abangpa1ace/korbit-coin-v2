@@ -1,11 +1,13 @@
-import { themeWidth } from "@/themes/variable";
-import styled from "@emotion/styled";
-import { PropsWithChildren } from "react";
+import { themeWidth } from '@/themes/variable';
+import styled from '@emotion/styled';
+import { PropsWithChildren } from 'react';
+import { Toaster } from 'react-hot-toast';
 
 function Layout({ children }: PropsWithChildren) {
   return (
     <Container>
       <Content>{children}</Content>
+      <Toaster position="top-center" />
     </Container>
   );
 }

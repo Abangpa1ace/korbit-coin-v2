@@ -1,6 +1,7 @@
 import ListBookmarks from '@/components/coin/list/bookmarks/ListBookmarks';
 import ListTabs from '@/components/coin/list/common/ListTabs';
 import ListQuotes from '@/components/coin/list/quotes/ListQuotes';
+import BaseErrorBoundary from '@/components/shared/BaseErrorBoundary';
 import BaseSuspense from '@/components/shared/BaseSuspense';
 import Spacer from '@/components/shared/Spacer';
 import { ListTabMap } from '@/constants/coin/list';
@@ -13,9 +14,11 @@ function List(): JSX.Element {
     <Main>
       <ListTabs />
       <Spacer y={30} />
-      <BaseSuspense>
-        {activeTab === ListTabMap.BOOKMARKS ? <ListBookmarks /> : <ListQuotes />}
-      </BaseSuspense>
+      <BaseErrorBoundary>
+        <BaseSuspense>
+          {activeTab === ListTabMap.BOOKMARKS ? <ListBookmarks /> : <ListQuotes />}
+        </BaseSuspense>
+      </BaseErrorBoundary>
     </Main>
   );
 }
