@@ -1,12 +1,16 @@
-import { lazy } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Suspense, lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-const ListPage = lazy(() => import("../pages/List"));
+const ListPage = lazy(() => import('../pages/List'));
+const DetailPage = lazy(() => import('../pages/Detail'));
 
 export default function Router() {
   return (
-    <Routes>
-      <Route path="/" element={<ListPage />} />
-    </Routes>
+    <Suspense fallback={<></>}>
+      <Routes>
+        <Route path="/" element={<ListPage />} />
+        <Route path="/:coinId" element={<DetailPage />} />
+      </Routes>
+    </Suspense>
   );
 }
