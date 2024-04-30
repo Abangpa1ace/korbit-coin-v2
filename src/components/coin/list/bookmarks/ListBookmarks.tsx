@@ -1,4 +1,4 @@
-import ListBookmarksTable from '@/components/list/bookmarks/ListBookmarksTable';
+import ListBookmarksTable from '@/components/coin/list/bookmarks/ListBookmarksTable';
 
 const ListBookmarks = () => {
   return <ListBookmarksTable />;

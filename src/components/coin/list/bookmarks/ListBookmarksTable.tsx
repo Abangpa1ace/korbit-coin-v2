@@ -1,4 +1,4 @@
-import ListTable from '@/components/list/common/ListTable/ListTable';
+import ListTable from '@/components/coin/list/common/ListTable/ListTable';
 import { BookmartListDefaultParams } from '@/constants/coin/list';
 import useGetCoinsByIds from '@/hooks/apis/useGetCoinsByIds';
 import useBookmarkStore from '@/store/coin/bookmarkStore';

@@ -1,7 +1,7 @@
-import { ListTableColumnType } from "@/components/list/common/ListTable/ListTable";
-import { themeColor } from "@/themes/variable";
-import styled from "@emotion/styled";
-import { Children } from "react";
+import { ListTableColumnType } from '@/components/coin/list/common/ListTable/ListTable';
+import { themeColor } from '@/themes/variable';
+import styled from '@emotion/styled';
+import { Children } from 'react';
 
 interface Props {
   columns: ListTableColumnType[];
@@ -10,12 +10,16 @@ interface Props {
 const ListTableHeader = ({ columns }: Props) => {
   return (
     <Row>
-      {Children.toArray(columns.map(({ title, align, width }) => (
-        <Column align={align} width={width}>{title || ''}</Column>
-      )))}
+      {Children.toArray(
+        columns.map(({ title, align, width }) => (
+          <Column align={align} width={width}>
+            {title || ''}
+          </Column>
+        )),
+      )}
     </Row>
-  )
-}
+  );
+};
 
 export default ListTableHeader;
 
@@ -32,7 +36,7 @@ const Column = styled.div<Pick<ListTableColumnType, 'align' | 'width'>>`
   flex-shrink: 1;
   height: 100%;
   display: flex;
-  justify-content: ${({ align }) => align === 'right' ? 'flex-end' : 'flex-start'};
+  justify-content: ${({ align }) => (align === 'right' ? 'flex-end' : 'flex-start')};
   align-items: center;
   padding: 0 10px;
   color: ${themeColor.gray600};

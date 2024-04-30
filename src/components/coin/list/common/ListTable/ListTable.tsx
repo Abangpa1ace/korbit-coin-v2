@@ -1,5 +1,5 @@
-import ListTableBodyRow from '@/components/list/common/ListTable/ListTableBody/ListTableBodyRow';
-import ListTableHeader from '@/components/list/common/ListTable/ListTableHeader';
+import ListTableBodyRow from '@/components/coin/list/common/ListTable/ListTableBodyRow';
+import ListTableHeader from '@/components/coin/list/common/ListTable/ListTableHeader';
 import { themeColor } from '@/themes/variable';
 import { CoinListItemType } from '@/types/coin/list';
 import styled from '@emotion/styled';

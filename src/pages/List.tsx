@@ -1,6 +1,6 @@
-import ListBookmarks from '@/components/list/bookmarks/ListBookmarks';
-import ListTabs from '@/components/list/common/ListTabs';
-import ListQuotes from '@/components/list/quotes/ListQuotes';
+import ListBookmarks from '@/components/coin/list/bookmarks/ListBookmarks';
+import ListTabs from '@/components/coin/list/common/ListTabs';
+import ListQuotes from '@/components/coin/list/quotes/ListQuotes';
 import BaseSuspense from '@/components/shared/BaseSuspense';
 import Spacer from '@/components/shared/Spacer';
 import { ListTabMap } from '@/constants/coin/list';
